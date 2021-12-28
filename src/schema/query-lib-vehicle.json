@@ -1,0 +1,323 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": [
+    {
+      "type": "crud",
+      "mode": "cards",
+      "api": {
+        "method": "post",
+        "url": "/api/v2/motorvehicle/search",
+        "data": {
+          "&": "$$",
+          "pass_time": "${pass_time | split}",
+          "info_kind": "${info_kind | toInt}",
+          "plate_no": "${plate_no | toInt}",
+          "lane_no": "${lane_no | toInt}"
+        },
+        "responseData": {
+          "&": "$$",
+          "items": "${items | default:[]}"
+        },
+        "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit * 1   }\n }"
+      },
+      "pageField": "offset",
+      "perPageField": "limit",
+      "filter": {
+        "title": "",
+        "controls": [
+          {
+            "type": "date-range",
+            "name": "pass_time",
+            "label": "采集时间:"
+          },
+          {
+            "type": "select",
+            "name": "source_id",
+            "label": "来源:",
+            "options": [
+              {
+                "label": "视频",
+                "value": "1"
+              },
+              {
+                "label": "图像",
+                "value": "2"
+              },
+              {
+                "label": "文件",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "name": "info_kind",
+            "label": "信息分类:",
+            "options": [
+              {
+                "label": "人工采集",
+                "value": 1
+              },
+              {
+                "label": "自动采集",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "device_id",
+            "label": "设备编码:"
+          },
+          {
+            "type": "text",
+            "name": "place",
+            "label": "采集地点:"
+          },
+          {
+            "type": "select",
+            "name": "vehicle_brand",
+            "label": "品牌种类:",
+            "options": [
+              {
+                "label": "大型汽车号牌",
+                "value": "1"
+              },
+              {
+                "label": "小型汽车号牌",
+                "value": "2"
+              },
+              {
+                "label": "使馆汽车号牌",
+                "value": "3"
+              },
+              {
+                "label": "领馆汽车号牌",
+                "value": "4"
+              },
+              {
+                "label": "境外汽车号牌",
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "lane_no",
+            "label": "车道号:"
+          },
+          {
+            "type": "text",
+            "name": "plate_no",
+            "label": "车牌号:"
+          }
+        ],
+        "actions": [
+          {
+            "type": "submit",
+            "label": "查询",
+            "level": "primary"
+          },
+          {
+            "type": "reset",
+            "label": "重置",
+            "level": "primary"
+          }
+        ]
+      },
+      "headerToolbar": [],
+      "footerToolbar": [
+        "statistics",
+        "switch-per-page",
+        "pagination"
+      ],
+      "card": {
+        "body": [
+          {
+            "type": "image",
+            "className": "w-full m-b-sm",
+            "src": "${sub_image_list[0].storage_path}",
+            "thumbMode": "cover"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${device_id}"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${place}"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${pass_time | date:YYYY-MM-DD HH\\:mm\\:ss}"
+          }
+        ],
+        "actions": [
+          {
+            "type": "button",
+            "label": "查看",
+            "actionType": "drawer",
+            "drawer": {
+              "position": "right",
+              "size": "md",
+              "title": "详细信息",
+              "body": [
+                {
+                  "type": "grid",
+                  "className": "m-b-md",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "过车信息",
+                      "md": 4
+                    },
+                    {
+                      "type": "divider",
+                      "text": "sdf"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-md",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "采集地点: ${place}",
+                      "md": 12
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "采集时间: ${pass_time | date:YYYY-MM-DD HH\\:mm\\:ss}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "设备编码: ${device_id}"
+                    },
+                    {
+                      "type": "plain",
+                      "text": "车道号: ${lane_no}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "行驶速度: ${speed}"
+                    },
+                    {
+                      "type": "plain",
+                      "text": "行驶方向: ${direction}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-md",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "基础信息",
+                      "md": 4
+                    },
+                    {
+                      "type": "divider"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "车牌号: ${plate_no}",
+                      "md": 6
+                    },
+                    {
+                      "type": "plain",
+                      "text": "车牌颜色: ${plate_color}",
+                      "md": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "号牌种类: ${plate_class}",
+                      "md": 6
+                    },
+                    {
+                      "type": "plain",
+                      "text": "车辆类型: ${vehicle_class}",
+                      "md": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "车身颜色: ${vehicle_color}"
+                    },
+                    {
+                      "type": "plain",
+                      "text": "车辆品牌: ${vehicle_brand}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "车辆使用性质代码: ${using_properties_code}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-md",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "详情照片",
+                      "md": 4
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "src": "imgUrl+${sub_image_list[0].storage_path}"
+                }
+              ],
+              "actions": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

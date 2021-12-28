@@ -1,0 +1,32 @@
+.search-form {
+  :global {
+    .ant-form-inline {
+      .ant-form-item-control,
+      .ant-form-item-label > label {
+        color: #fff;
+      }
+      .ant-form-item-control-input-content > {
+        .inputRange {
+          width: 200px;
+          :global {
+            .ant-input-group {
+              display: flex;
+              .ant-form-item {
+                width: 80px !important;
+                margin: 0;
+                min-width: 0 !important;
+                .ant-form-item-control-input {
+                  min-width: 0 !important;
+                }
+              }
+              .site-input-split {
+                height: 31px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}

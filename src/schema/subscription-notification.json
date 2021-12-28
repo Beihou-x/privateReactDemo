@@ -1,0 +1,70 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": {
+    "type": "crud",
+    "api": {
+      "method": "post",
+      "url": "/ui/application/search",
+      "data": {
+        "inst_time": "${inst_time | split}",
+        "offset": "${offset}",
+        "limit": "${limit}",
+        "id": "${id}",
+        "name": "${name}"
+      },
+      "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+    },
+    "pageField": "offset",
+    "perPageField": "limit",
+    "filter": {
+      "title": "",
+      "controls": [
+        {
+          "type": "text",
+          "name": "name",
+          "label": "订阅编号:"
+        }
+      ]
+    },
+    "headerToolbar": [],
+    "footerToolbar": [
+      "statistics",
+      "switch-per-page",
+      "pagination"
+    ],
+    "columns": [
+      {
+        "name": "no",
+        "label": "通知编号",
+        "width": 200,
+        "type": "text"
+      },
+      {
+        "name": "name",
+        "label": "订阅编号",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "authorization",
+        "label": "订阅标题",
+        "width": 200,
+        "type": "text",
+        "className": "word-break"
+      },
+      {
+        "name": "expired_at",
+        "label": "触发时间",
+        "type": "text",
+        "width": 100
+      },
+      {
+        "name": "supplier",
+        "label": "统计",
+        "type": "text",
+        "width": 100
+      }
+    ]
+  }
+}

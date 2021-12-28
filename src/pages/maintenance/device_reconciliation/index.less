@@ -1,0 +1,35 @@
+.bar {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.detail_assess {
+  .header {
+    font-size: 16px;
+    color: #fff;
+    height: 15px;
+    line-height: 15px;
+    .back {
+      cursor: pointer;
+    }
+    .date {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+  // margin-bottom: 10px !important;
+  :global {
+    .ant-card-body {
+      padding: 12px 24px !important;
+    }
+  }
+
+  .infoDetail {
+    display: flex;
+    justify-content: space-between;
+    .item {
+      width: 48%;
+    }
+  }
+}

@@ -1,0 +1,190 @@
+.screen {
+  width: 100vw;
+  // height: 100vh;
+  background: url("@/assets/screen-bg.png") no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+  // min-height: 969px;
+  min-width: 1920px;
+
+  .header-total {
+    height: 5vh;
+    width: 98%;
+    margin: 0 auto;
+    white-space: nowrap;
+    background-color: #050E2F;
+    border-bottom: 1px solid rgba(0, 95, 220, 0.5);
+  }
+
+  &-card {
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+    background: url("@/assets/hotel-line-card-bg.png") no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    position: relative;
+
+    .conBorBox {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      .bor {
+        width: ~'calc(100% - 2px)';
+        height: ~'calc(100% - 2px)';
+        margin: 1px;
+        position: absolute;
+        z-index: 0;
+        //border: 1px solid rgba(29, 148, 246, 0.45);
+        box-shadow: inset 0px 0px 15px 6px rgba(0, 192, 255, 0.2);
+        animation: borColor 1s linear infinite alternate;
+        border-radius: 8px;
+      }
+      .line {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        &::before, &::after {
+          display: block;
+          content: '';
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          border: 1px solid rgba(29, 148, 246, 0.7);
+          animation: lineWH 3s linear infinite alternate;
+        }
+      }
+      .lineTop {
+        &::before {
+          top: 0;
+          left: 0;
+          border-right: none;
+          border-bottom: none;
+          border-top-left-radius: 9px;
+        }
+        &::after {
+          top: 0;
+          right: 0;
+          border-left: none;
+          border-bottom: none;
+          border-top-right-radius: 9px;
+        }
+      }
+      .lineBottom {
+        &::before {
+          bottom: 0;
+          left: 0;
+          border-right: none;
+          border-top: none;
+          border-bottom-left-radius: 9px;
+        }
+        &::after {
+          bottom: 0;
+          right: 0;
+          border-left: none;
+          border-top: none;
+          border-bottom-right-radius: 9px;
+        }
+      }
+    }
+
+    p {
+      color: rgba(255, 254, 254, 0.8);
+    }
+
+    :global {
+      .ant-card-head {
+        border-bottom: 0;
+        color: #fff;
+      }
+
+      .ant-card-body {
+        padding: 5px 20px;
+      }
+
+      .ant-card-head-title {
+        color: rgba(79, 217, 252, 1);
+        width: 8vw;
+        line-height: 48px;
+        letter-spacing: 2px;
+        font-weight: 400;
+        padding: 0;
+        display: inline-block;
+      }
+    }
+  }
+
+  &-service-card {
+    border: 0;
+    background: transparent;
+    background: url("@/assets/hotel-line-card-bg.png") no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+
+    :global {
+      .ant-card-head {
+        border-bottom: 0;
+        color: #fff;
+      }
+
+      .ant-card-body {
+        padding: 5px 20px;
+      }
+
+      .ant-card-head-title {
+        display: inline-block;
+        flex: inherit;
+        margin: 0 auto;
+        color: rgba(255, 254, 254, 0.8);
+        width: 18vw;
+        height: 4vh;
+        padding: 0;
+        line-height: 4vh;
+        text-align: center;
+        text-shadow: 0px 0px 24px #d0cccc;
+        letter-spacing: 2px;
+        font-weight: 400;
+        background-image: url('@/assets/hotel-line-card-title-bg.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% 100%;
+      }
+    }
+
+  }
+
+  @keyframes lineWH {
+    0% {
+      width: 150px;
+      height: 150px;
+    }
+    100% {
+      width: 50%;
+      height: 50%;
+    }
+  }
+
+  @keyframes borColor {
+    0% {
+      border-color: rgba(0, 192, 255, 0.45);
+    }
+
+    100% {
+      border-color: rgba(0, 192, 255, 0.8);
+    }
+
+  }
+
+}
+
+.access-graph-card {
+  :global {
+    .ant-card-body {
+      padding: 9px 20px;
+    }
+  }
+}

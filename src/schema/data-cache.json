@@ -1,0 +1,122 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": {
+    "type": "crud",
+    "api": {
+      "method": "post",
+      "url": "/ui/camera/search",
+      "data": {
+        "inst_time": "${inst_time | split}",
+        "offset": "${offset}",
+        "limit": "${limit}",
+        "id": "${id}",
+        "name": "${name}"
+      },
+      "responseData": {
+        "&": "$$",
+        "items": "${items | default:[]}"
+      },
+      "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+    },
+    "pageField": "offset",
+    "perPageField": "limit",
+    "filter": {
+      "title": "",
+      "controls": [
+        {
+          "type": "radios",
+          "name": "type",
+          "label": "时间类型:",
+          "inline": true,
+          "options": [
+            {
+              "label": "上传",
+              "value": "a"
+            },
+            {
+              "label": "抓拍",
+              "value": "b"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "id",
+          "label": "设备编号:"
+        },
+        {
+          "type": "date-range",
+          "name": "inst_time",
+          "label": "时间:"
+        }
+      ],
+      "actions": [
+        {
+          "type": "submit",
+          "label": "查询",
+          "level": "primary"
+        },
+        {
+          "type": "reset",
+          "label": "重置",
+          "level": "secondary"
+        }
+      ]
+    },
+    "bulkActions": [
+      {
+        "label": "批量删除",
+        "actionType": "ajax",
+        "api": {
+          "method": "delete",
+          "url": "/ui/batch/camera",
+          "data": {
+            "ids": "${ids | split}"
+          }
+        },
+        "reload": "device.crud",
+        "confirmText": "确定要批量删除?"
+      }
+    ],
+    "headerToolbar": [
+      "bulkActions"
+    ],
+    "footerToolbar": [
+      "statistics",
+      "switch-per-page",
+      "pagination"
+    ],
+    "columns": [
+      {
+        "name": "id",
+        "label": "设备编号",
+        "width": 200,
+        "type": "text"
+      },
+      {
+        "name": "name",
+        "label": "抓拍时间",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "manufactor",
+        "label": "上传时间",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "type": "operation",
+        "label": "操作",
+        "width": 100,
+        "buttons": [
+          {
+            "label": "详情"
+          }
+        ],
+        "toggled": true
+      }
+    ]
+  }
+}

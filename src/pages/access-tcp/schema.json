@@ -1,0 +1,336 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "FaceListObject": {
+      "type": "object",
+      "properties": {
+        "FaceObject": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "FaceID": {
+                  "type": "string"
+                },
+                "InfoKind": {
+                  "type": "integer"
+                },
+                "SourceID": {
+                  "type": "string"
+                },
+                "DeviceID": {
+                  "type": "string"
+                },
+                "LeftTopX": {
+                  "type": "integer"
+                },
+                "LeftTopY": {
+                  "type": "integer"
+                },
+                "RightBtmX": {
+                  "type": "integer"
+                },
+                "RightBtmY": {
+                  "type": "integer"
+                },
+                "LocationMarkTime": {
+                  "type": "string"
+                },
+                "FaceAppearTime": {
+                  "type": "string"
+                },
+                "GenderCode": {
+                  "type": "string"
+                },
+                "IsDriver": {
+                  "type": "integer"
+                },
+                "IsForeigner": {
+                  "type": "integer"
+                },
+                "IsSuspectedTerrorist": {
+                  "type": "integer"
+                },
+                "IsCriminalInvolved": {
+                  "type": "integer"
+                },
+                "IsDetainees": {
+                  "type": "integer"
+                },
+                "IsVictim": {
+                  "type": "integer"
+                },
+                "IsSuspiciousPerson": {
+                  "type": "integer"
+                },
+                "SubImageList": {
+                  "type": "object",
+                  "properties": {
+                    "SubImageInfoObject": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "ImageID": {
+                              "type": "string"
+                            },
+                            "EventSort": {
+                              "type": "integer"
+                            },
+                            "DeviceID": {
+                              "type": "string"
+                            },
+                            "StoragePath": {
+                              "type": "string"
+                            },
+                            "Type": {
+                              "type": "string"
+                            },
+                            "ShotTime": {
+                              "type": "string"
+                            },
+                            "FileFormat": {
+                              "type": "string"
+                            },
+                            "Width": {
+                              "type": "integer"
+                            },
+                            "Height": {
+                              "type": "integer"
+                            },
+                            "Data": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "ImageID",
+                            "EventSort",
+                            "DeviceID",
+                            "StoragePath",
+                            "Type",
+                            "ShotTime",
+                            "FileFormat",
+                            "Width",
+                            "Height",
+                            "Data"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "ImageID": {
+                              "type": "string"
+                            },
+                            "EventSort": {
+                              "type": "integer"
+                            },
+                            "DeviceID": {
+                              "type": "string"
+                            },
+                            "StoragePath": {
+                              "type": "string"
+                            },
+                            "Type": {
+                              "type": "string"
+                            },
+                            "ShotTime": {
+                              "type": "string"
+                            },
+                            "FileFormat": {
+                              "type": "string"
+                            },
+                            "Width": {
+                              "type": "integer"
+                            },
+                            "Height": {
+                              "type": "integer"
+                            },
+                            "Data": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "ImageID",
+                            "EventSort",
+                            "DeviceID",
+                            "StoragePath",
+                            "Type",
+                            "ShotTime",
+                            "FileFormat",
+                            "Width",
+                            "Height",
+                            "Data"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "ImageID": {
+                              "type": "string"
+                            },
+                            "EventSort": {
+                              "type": "integer"
+                            },
+                            "DeviceID": {
+                              "type": "string"
+                            },
+                            "StoragePath": {
+                              "type": "string"
+                            },
+                            "Type": {
+                              "type": "string"
+                            },
+                            "ShotTime": {
+                              "type": "string"
+                            },
+                            "FileFormat": {
+                              "type": "string"
+                            },
+                            "Width": {
+                              "type": "integer"
+                            },
+                            "Height": {
+                              "type": "integer"
+                            },
+                            "Data": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "ImageID",
+                            "EventSort",
+                            "DeviceID",
+                            "StoragePath",
+                            "Type",
+                            "ShotTime",
+                            "FileFormat",
+                            "Width",
+                            "Height",
+                            "Data"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "ImageID": {
+                              "type": "string"
+                            },
+                            "EventSort": {
+                              "type": "integer"
+                            },
+                            "DeviceID": {
+                              "type": "string"
+                            },
+                            "StoragePath": {
+                              "type": "string"
+                            },
+                            "Type": {
+                              "type": "string"
+                            },
+                            "ShotTime": {
+                              "type": "string"
+                            },
+                            "FileFormat": {
+                              "type": "string"
+                            },
+                            "Width": {
+                              "type": "integer"
+                            },
+                            "Height": {
+                              "type": "integer"
+                            },
+                            "Data": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "ImageID",
+                            "EventSort",
+                            "DeviceID",
+                            "StoragePath",
+                            "Type",
+                            "ShotTime",
+                            "FileFormat",
+                            "Width",
+                            "Height",
+                            "Data"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "SubImageInfoObject"
+                  ]
+                },
+                "RelatedType": {
+                  "type": "string"
+                },
+                "RelatedList": {
+                  "type": "object",
+                  "properties": {
+                    "RelatedObject": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "RelatedType": {
+                              "type": "string"
+                            },
+                            "RelatedID": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "RelatedType",
+                            "RelatedID"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "RelatedObject"
+                  ]
+                }
+              },
+              "required": [
+                "FaceID",
+                "InfoKind",
+                "SourceID",
+                "DeviceID",
+                "LeftTopX",
+                "LeftTopY",
+                "RightBtmX",
+                "RightBtmY",
+                "LocationMarkTime",
+                "FaceAppearTime",
+                "GenderCode",
+                "IsDriver",
+                "IsForeigner",
+                "IsSuspectedTerrorist",
+                "IsCriminalInvolved",
+                "IsDetainees",
+                "IsVictim",
+                "IsSuspiciousPerson",
+                "SubImageList",
+                "RelatedType",
+                "RelatedList"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "FaceObject"
+      ]
+    }
+  },
+  "required": [
+    "FaceListObject"
+  ]
+}

@@ -1,0 +1,224 @@
+.screen {
+  width: 100vw;
+  background: url("@/assets/screen-bg.png") no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+  // min-height: 969px;
+  min-width: 1920px;
+
+  .header-total {
+    height: 5vh;
+    width: 96%;
+    margin: 0 auto;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(0, 95, 220, 0.5);
+  }
+
+  &-card {
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+    background: url("@/assets/screen-card-content-bg.png") no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+
+    .conBorBox {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      .bor {
+        width: ~'calc(100% - 2px)';
+        height: ~'calc(100% - 2px)';
+        margin: 1px;
+        position: absolute;
+        z-index: 0;
+        //border: 1px solid rgba(29, 148, 246, 0.45);
+        box-shadow: inset 0px 0px 15px 6px rgba(0, 192, 255, 0.2);
+        animation: borColor 1s linear infinite alternate;
+        border-radius: 8px;
+      }
+      .line {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        &::before, &::after {
+          display: block;
+          content: '';
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          border: 1px solid rgba(29, 148, 246, 0.7);
+          animation: lineWH 3s linear infinite alternate;
+        }
+      }
+      .lineTop {
+        &::before {
+          top: 0;
+          left: 0;
+          border-right: none;
+          border-bottom: none;
+          border-top-left-radius: 9px;
+        }
+        &::after {
+          top: 0;
+          right: 0;
+          border-left: none;
+          border-bottom: none;
+          border-top-right-radius: 9px;
+        }
+      }
+      .lineBottom {
+        &::before {
+          bottom: 0;
+          left: 0;
+          border-right: none;
+          border-top: none;
+          border-bottom-left-radius: 9px;
+        }
+        &::after {
+          bottom: 0;
+          right: 0;
+          border-left: none;
+          border-top: none;
+          border-bottom-right-radius: 9px;
+        }
+      }
+    }
+
+    :global {
+      .ant-card-head {
+        border-bottom: 0;
+        color: #fff;
+      }
+
+      .ant-card-body {
+        padding: 12px;
+      }
+
+      .ant-card-head-title {
+        display: inline-block;
+        flex: inherit;
+        margin: 0 auto;
+        color: rgba(255, 254, 254, 0.8);
+        border: 2px solid rgba(0, 95, 220, 0.5);
+        border-radius: 0px 0px 3px 3px;
+        min-width: 8vw;
+        height: 4vh;
+        margin-top: 2px;
+        padding: 0 10px;
+        line-height: 4vh;
+        text-align: center;
+        text-shadow: 0px 0px 24px #d0cccc;
+        letter-spacing: 2px;
+        font-weight: 400;
+      }
+
+      .ant-statistic-title {
+        color: #fff;
+      }
+
+      .ant-statistic-content-value {
+        color: rgba(79, 217, 252, 1);
+      }
+    }
+
+    .circular-ring {
+      display: flex;
+      align-items: center;
+      color: rgba(255, 254, 254, 0.8);
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+  }
+
+  &-service-card {
+
+    &-title {
+      min-height: 48px;
+      line-height: 48px;
+      padding: 0 24px;
+      background: url("@/assets/screen-card-header-bg.png") no-repeat;
+      color: #fff;
+      background-position: 0px center;
+    }
+
+  }
+
+  &-bottom {
+    position: absolute;
+    bottom: 2px;
+    border: 2px solid rgba(29, 148, 246, 0.7);
+    border-bottom: 0;
+    width: calc(100% - 32px);
+    margin: 0 16px;
+    border-radius: 5px 5px 0 0;
+    &-title {
+      min-height: 30px;
+      line-height: 30px;
+      padding: 0 24px;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255, 254, 254, 0.8);
+      background-position: 0px center;
+      text-shadow: 2px -1px 20px #d0cccc;
+    }
+
+    .radio-group {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+
+
+}
+
+@media screen and (max-width: 1366px) {
+  .screen-bottom {
+    display: none;
+  }
+}
+
+.up {
+  background-image: url("@/assets/up.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+}
+
+.dowm {
+  background-image: url("@/assets/down.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+}
+
+@keyframes lineWH {
+  0% {
+    width: 150px;
+    height: 150px;
+  }
+  100% {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+@keyframes borColor {
+  0% {
+    border-color: rgba(0, 192, 255, 0.45);
+  }
+  100% {
+    border-color: rgba(0, 192, 255, 0.8);
+  }
+}

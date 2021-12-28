@@ -1,0 +1,49 @@
+:global {
+  .baseInfo {
+    min-width: 800px;
+    .ant-tabs-nav .ant-tabs-tab-active {
+      background: none !important;
+    }
+
+    .flex {
+      display: flex;
+      .part {
+        width: 200px;
+        height: 220px;
+        margin-right: 30px;
+        text-align: center;
+      }
+    }
+
+    .assignService {
+      display: flex;
+      width: 100%;
+      height: 200px;
+      border: 1px solid #4a5c7b;
+
+      .assignService_left {
+        width: 35%;
+        height: 100%;
+        margin: 0 auto;
+        padding: 20px 5%;
+        overflow-y: auto;
+      }
+
+      .assignService_right {
+        overflow-y: auto;
+        width: 65%;
+        height: 100%;
+        padding: 10px 5%;
+        border-left: 1px solid #4a5c7b;
+      }
+    }
+    .checkbox {
+        display: flex;
+        flex-direction: column;
+      .ant-checkbox-group-item {
+        // display: block !important;
+        margin-bottom: 8px !important;
+      }
+    }
+  }
+}

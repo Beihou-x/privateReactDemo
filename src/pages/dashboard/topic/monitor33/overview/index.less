@@ -1,0 +1,95 @@
+.overview {
+  .statistics {
+    display: flex;
+    // justify-content: space-around;
+    padding: 10px 0 20px 0;
+    .label {
+      font-size: 16px;
+      font-family: Source Han Sans CN;
+      font-weight: 400;
+      color: #4fd9fc;
+      line-height: 26px;
+    }
+    .label1 {
+      width: 26%;
+      text-align: right;
+    }
+    .label2 {
+      width: 48%;
+      text-align: center;
+    }
+    .label3 {
+      width: 26%;
+      text-align: left;
+    }
+    .value {
+      font-size: 32px;
+      font-family: Source Han Sans CN;
+      font-weight: 500;
+      color: #00ff00;
+      margin-left: 14px;
+    }
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .common {
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      text-align: center;
+      img {
+        width: 25%;
+      }
+    }
+    .part1 {
+      width: 26%;
+      background: url(../../../../../assets/dashboard/lgyl-left.png);
+      height: 55vh;
+      .common();
+
+      &_t {
+        width: 100%;
+        height: 40%;
+      }
+      &_b {
+        width: 100%;
+        height: 45%;
+      }
+
+      .lineTile{
+        width: 50%;
+        margin-bottom: 0;
+        text-align: left;
+        margin: 0 auto;
+      }
+    }
+    .part2 {
+      width: 48%;
+      height: 25vh;
+    }
+    .part3 {
+      width: 26%;
+      height: 55vh;
+      &_top {
+        width: 100%;
+        height: 25vh;
+        background: url(../../../../../assets/dashboard/lgyl-right-top.png);
+        .common();
+      }
+      &_bottom {
+        width: 100%;
+        height: 30vh;
+        background: url(../../../../../assets/dashboard/lgyl-right-bottom.png);
+        .common();
+      }
+    }
+  }
+  .bottom {
+    width: 100%;
+    height: 10vh;
+    background: url(../../../../../assets/dashboard/lgyl-bottom.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+}

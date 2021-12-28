@@ -1,0 +1,107 @@
+.flex {
+  display: flex;
+  align-items: center;
+  :global {
+    .ant-radio-button-wrapper {
+      background: transparent;
+      color: #fff;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+  }
+}
+
+.top {
+  margin-bottom: 10px;
+
+  div {
+    margin-bottom: 5px;
+  }
+
+  .label {
+    margin-right: 20px;
+  }
+
+  .value {
+    border: 1px solid #C1C5CA;
+    padding: 3px 10px;
+    margin-right: 15px;
+
+    span {
+      margin-right: 5px;
+    }
+  }
+
+  .error {
+    color: #D9001B;
+  }
+}
+
+.title {
+  color: #fff;
+  font-size: large;
+}
+
+.updateTime {
+  // background-color: #475673;
+  padding: 10px 20px;
+  margin: 10px 0;
+}
+
+.bigPic {
+  width: 98%;
+  height: 410px;
+  margin: 5px;
+  background-color: #475673;
+  text-align: center;
+  position: relative;
+  padding: 5px;
+}
+
+.centerUpPic {
+  text-align: center;
+  width: 440px;
+  height: 200px;
+  margin: 5px;
+  background-color: #475673;
+  position: relative;
+  padding: 5px;
+}
+
+.carPic {
+  width: 215px;
+  height: 200px;
+  margin: 5px;
+  text-align: center;
+  background-color: #475673;
+  position: relative;
+  padding: 5px;
+}
+
+.drivePic {
+  width: 215px;
+  height: 95px;
+  margin: 5px 5px 10px 5px;
+  text-align: center;
+  background-color: #475673;
+  position: relative;
+  padding: 5px;
+}
+
+.imageList {
+  &_title {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 100;
+  }
+
+  &_noData {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "type": "page",
+  "name": "device",
+  "body":  {
+    "type": "tabs",
+    "mode": "vertical",
+    "tabs": [
+      {
+        "title": "总览",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/device_overview/search",
+            "data": {
+              "&": "$$",
+              "name": "${name}"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "place_code",
+              "label": "组织区域",
+              "width": 200,
+              "type": "text"
+            },
+
+            {
+              "name": "device_num",
+              "label": "采集设备数",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "normal_num",
+              "label": "检测设备正常数",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "id_abnormal_num",
+              "label": "编码异常设备数",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "type": "text",
+              "name": "lonlat_abnormal_num",
+              "label": "经纬度异常设备数",
+              "width": 140
+            }
+          ]
+        }
+      },
+      {
+        "title": "国标编码监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/device_view/search",
+            "data": {
+              "&": "$$",
+              "name": "${name}",
+              "type": "id_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "text",
+                "name": "alias",
+                "label": "采集设备名称:"
+              },
+              {
+                "type": "text",
+                "name": "id",
+                "label": "采集设备编码:"
+              },
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              },
+              {
+                "type": "select",
+                "name": "function_type",
+                "label": "设备类型:",
+                "options": [
+                  {
+                    "label": "人像卡口",
+                    "value": "02"
+                  },
+                  {
+                    "label": "超级卡口",
+                    "value": "25"
+                  },
+                  {
+                    "label": "车辆卡口",
+                    "value": "01"
+                  }
+                ]
+              },
+              {
+                "type": "select",
+                "name": "status",
+                "label": "监测结果:",
+                "options": [
+                  {
+                    "label": "正常",
+                    "value": "1"
+                  },
+                  {
+                    "label": "异常",
+                    "value": "0"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "secondary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "alias",
+              "label": "采集设备名称",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "id",
+              "label": "采集设备编码",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "place_code",
+              "label": "所在组织",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "status",
+              "label": "监测结果",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "type": "text",
+              "name": "message",
+              "label": "异常类型",
+              "width": 140
+            }
+          ]
+        }
+      },
+      {
+        "title": "经纬度监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/device_view/search",
+            "data": {
+              "&": "$$",
+              "name": "${name}",
+              "type": "lonlat_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "alias",
+                "label": "采集设备名称:"
+              },
+              {
+                "type": "text",
+                "name": "id",
+                "label": "采集设备编码:"
+              },
+              {
+                "type": "select",
+                "name": "function_type",
+                "label": "设备类型:",
+                "options": [
+                  {
+                    "label": "人像卡口",
+                    "value": "02"
+                  },
+                  {
+                    "label": "超级卡口",
+                    "value": "25"
+                  },
+                  {
+                    "label": "车辆卡口",
+                    "value": "01"
+                  }
+                ]
+              },
+              {
+                "type": "select",
+                "name": "status",
+                "label": "监测结果:",
+                "options": [
+                  {
+                    "label": "正常",
+                    "value": "1"
+                  },
+                  {
+                    "label": "异常",
+                    "value": "0"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "secondary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "alias",
+              "label": "采集设备名称",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "id",
+              "label": "采集设备编码",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "lon_lat",
+              "label": "经纬度",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "status",
+              "label": "监测结果",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "message",
+              "label": "异常类型",
+              "type": "text",
+              "width": 100
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

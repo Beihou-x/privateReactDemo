@@ -1,0 +1,62 @@
+.logo {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 32px;
+  margin: 16px;
+  color: #fff;
+  font-size: 1.5714rem;
+}
+
+.site-layout-background {
+  background-color: #fff;
+}
+
+.trigger {
+  font-size: 1.2857rem;
+  line-height: 4.5714rem;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.basiclayout {
+  min-height: ~"calc(100vh)" !important;
+  background-color: #222937;
+
+  .content {
+    // overflow-y: scroll;
+    // overflow-x: hidden;
+
+    // height: calc(100vh - 296px);
+
+  }
+}
+
+.content1 {
+  padding: 0 20px;
+
+  :global {
+    .ant-breadcrumb {
+      padding: 0 !important;
+    }
+  }
+
+  :global {
+    .ant-layout-header {
+      background: rgba(25, 31, 42, 1);
+      color: #fff;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .ant-layout-footer {
+      text-align: center;
+    }
+
+    .ant-badge-status-dot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": [
+    {
+      "type": "crud",
+      "mode": "cards",
+      "api": {
+        "method": "post",
+        "url": "/api/v2/face/search",
+        "data": {
+          "&": "$$",
+          "shot_time": "${shot_time | split}"
+        },
+        "responseData": {
+          "&": "$$",
+          "items": "${items | default:[]}",
+          "count": "${total | default:0}"
+        },
+        "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit * 1   }\n }"
+      },
+      "pageField": "offset",
+      "perPageField": "limit",
+      "filter": {
+        "title": "",
+        "controls": [
+          {
+            "type": "date-range",
+            "name": "shot_time",
+            "label": "采集时间:"
+          },
+          {
+            "type": "select",
+            "name": "source_id",
+            "label": "来源:",
+            "options": [
+              {
+                "label": "视频",
+                "value": "1"
+              },
+              {
+                "label": "图像",
+                "value": "2"
+              },
+              {
+                "label": "文件",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "device_id",
+            "label": "设备编码:"
+          },
+          {
+            "type": "text",
+            "name": "place",
+            "label": "采集地点:"
+          },
+          {
+            "type": "text",
+            "name": "name",
+            "label": "姓名:"
+          },
+          {
+            "type": "select",
+            "name": "id_type",
+            "label": "证件类型:",
+            "options": [
+              {
+                "label": "居民身份证",
+                "value": "1"
+              },
+              {
+                "label": "军官证",
+                "value": "2"
+              },
+              {
+                "label": "警官证",
+                "value": "3"
+              },
+              {
+                "label": "普通护照",
+                "value": "4"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "id_number",
+            "label": "证件号码:"
+          }
+        ],
+        "actions": [
+          {
+            "type": "submit",
+            "label": "查询",
+            "level": "primary"
+          },
+          {
+            "type": "reset",
+            "label": "重置",
+            "level": "primary"
+          }
+        ]
+      },
+      "headerToolbar": [],
+      "footerToolbar": [
+        "statistics",
+        "switch-per-page",
+        "pagination"
+      ],
+      "card": {
+        "body": [
+          {
+            "type": "image",
+            "className": "w-full m-b-sm",
+            "src": "${sub_image_list[0].storage_path}",
+            "thumbMode": "cover"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${device_id}"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${place}"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${shot_time | date:YYYY-MM-DD HH\\:mm\\:ss}"
+          }
+        ],
+        "actions": [
+          {
+            "type": "button",
+            "label": "查看",
+            "actionType": "drawer",
+            "drawer": {
+              "position": "right",
+              "size": "md",
+              "title": "详细信息",
+              "body": [
+                {
+                  "type": "grid",
+                  "className": "m-b-md",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "采集地点: ${place}",
+                      "md": 12
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "采集时间: ${shot_time | date:YYYY-MM-DD HH\\:mm\\:ss}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "设备编码: ${device_id}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "姓名: ${name}",
+                      "md": 6
+                    },
+                    {
+                      "type": "plain",
+                      "text": "性别: ${gender_code}",
+                      "md": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "年龄段: ${age_lower_limit} - ${age_up_limit}",
+                      "md": 6
+                    },
+                    {
+                      "type": "plain",
+                      "text": "证件类型: ${id_type}",
+                      "md": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "证件号码: ${id_number}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "相似度: ${similarity_degree}",
+                      "md": 6
+                    },
+                    {
+                      "type": "plain",
+                      "text": "戴帽子: ${wear_hat}",
+                      "md": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "戴眼镜: ${wear_glasses}",
+                      "md": 6
+                    },
+                    {
+                      "type": "plain",
+                      "text": "戴口罩: ${wear_mask}",
+                      "md": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "详情照片:"
+                    }
+                  ]
+                },
+                {
+                  "type": "image",
+                  "src": "imgUrl+${sub_image_list[0].storage_path}"
+                }
+              ],
+              "actions": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

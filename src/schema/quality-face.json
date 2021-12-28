@@ -1,0 +1,927 @@
+{
+  "type": "page",
+  "name": "device",
+  "body":  {
+    "type": "tabs",
+    "mode": "vertical",
+    "tabs": [
+      {
+        "title": "总览",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_overview/search",
+            "data": {
+              "&": "$$",
+              "name": "face"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "place_code",
+              "label": "组织区域",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "device_total",
+              "label": "人脸采集设备数",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "data_total",
+              "label": "抓拍数据总量",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "nil_data_device_total",
+              "label": "无抓拍数据设备数",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "data_sudden_drop_device_total",
+              "label": "抓拍量突降设备数",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "type": "text",
+              "name": "offline_rate",
+              "label": "脱机率",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "pic_req_rate",
+              "label": "图片访问异常占比",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "modeling_failed_rate",
+              "label": "抓拍数据建模失败占比",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "drop_away_rate",
+              "label": "数据倒挂率",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "delay_rate",
+              "label": "数据延迟率",
+              "width": 140
+            }
+          ]
+        }
+      },
+      {
+        "title": "数据量监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_view/search",
+            "data": {
+              "&": "$$",
+              "name": "face",
+              "type": "data_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "text",
+                "name": "alias",
+                "label": "设备名称:"
+              },
+              {
+                "type": "text",
+                "name": "id",
+                "label": "设备编码:"
+              },
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              },
+              {
+                "type": "select",
+                "name": "function_type",
+                "label": "设备类型:",
+                "options": [
+                  {
+                    "label": "人像卡口",
+                    "value": "02"
+                  },
+                  {
+                    "label": "超级卡口",
+                    "value": "25"
+                  },
+                  {
+                    "label": "车辆卡口",
+                    "value": "01"
+                  }
+                ]
+              },
+              {
+                "type": "select",
+                "name": "status",
+                "label": "监测结果:",
+                "options": [
+                  {
+                    "label": "正常",
+                    "value": "1"
+                  },
+                  {
+                    "label": "异常",
+                    "value": "0"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "primary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "alias",
+              "label": "设备名称",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "id",
+              "label": "国标ID",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "through_total",
+              "label": "抓拍量",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "through_7total",
+              "label": "周同比抓拍量",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "continued_nil_data_total",
+              "label": "持续无数据天数",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "type": "text",
+              "name": "status",
+              "label": "监测结果",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "message",
+              "label": "异常类型",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "manufactor_type",
+              "label": "数据趋势",
+              "width": 140
+            },
+            {
+              "type": "operation",
+              "label": "操作",
+              "width": 100,
+              "buttons": [
+                {
+                  "label": "过车查询",
+                  "type": "action",
+                  "level": "link"
+                }
+              ],
+              "toggled": true
+            }
+          ]
+        }
+      },
+      {
+        "title": "图片访问监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_view/search",
+            "data": {
+              "&": "$$",
+              "name": "face",
+              "type": "pic_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "simple_small_rate",
+                "label": "小图异常率:"
+              },
+              {
+                "type": "text",
+                "name": "simple_big_rate",
+                "label": "大图异常率:"
+              },
+              {
+                "type": "select",
+                "name": "function_type",
+                "label": "设备类型:",
+                "options": [
+                  {
+                    "label": "人像卡口",
+                    "value": "02"
+                  },
+                  {
+                    "label": "超级卡口",
+                    "value": "25"
+                  },
+                  {
+                    "label": "车辆卡口",
+                    "value": "01"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "primary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "alias",
+              "label": "设备名称",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "id",
+              "label": "国标ID",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "through_total",
+              "label": "抓拍数据量",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "simple_total",
+              "label": "抽检数据量",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "pic_req_abnormal_rate",
+              "label": "抽检数据异常量（异常占比）",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "simple_small_total",
+              "label": "抽检小图异常量",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "simple_small_rate",
+              "label": "抽检小图异常率",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "simple_big_total",
+              "label": "抽检大图异常量",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "simple_big_rate",
+              "label": "抽检大图异常率",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "type": "operation",
+              "label": "操作",
+              "width": 100,
+              "buttons": [
+                {
+                  "label": "过车查询",
+                  "type": "action",
+                  "level": "link"
+                }
+              ],
+              "toggled": true
+            }
+          ]
+        }
+      },
+      {
+        "title": "图片质量监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_view/search",
+            "data": {
+              "&": "$$",
+              "name": "face",
+              "type": "pic_quality_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "modeling_failed_rate",
+                "label": "建模失败率:"
+              },
+              {
+                "type": "text",
+                "name": "low_score_rate",
+                "label": "低评分数据占比:"
+              },
+              {
+                "type": "select",
+                "name": "function_type",
+                "label": "设备类型:",
+                "options": [
+                  {
+                    "label": "人像卡口",
+                    "value": "02"
+                  },
+                  {
+                    "label": "超级卡口",
+                    "value": "25"
+                  },
+                  {
+                    "label": "车辆卡口",
+                    "value": "01"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "primary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "alias",
+              "label": "设备名称",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "id",
+              "label": "国标ID",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "through_total",
+              "label": "抓拍数据量",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "modeling_failed_total",
+              "label": "建模失败数据量",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "modeling_failed_rate",
+              "label": "建模失败率",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "type": "text",
+              "name": "low_score_total",
+              "label": "低评分数据量",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "low_score_rate",
+              "label": "低评分数据占比",
+              "width": 140
+            },
+            {
+              "type": "operation",
+              "label": "操作",
+              "width": 100,
+              "buttons": [
+                {
+                  "label": "过车查询",
+                  "type": "action",
+                  "level": "link"
+                }
+              ],
+              "toggled": true
+            }
+          ]
+        }
+      },
+      {
+        "title": "数据时效性监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_view/search",
+            "data": {
+              "&": "$$",
+              "name": "face",
+              "type": "time_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "delay_rate",
+                "label": "延迟率:"
+              },
+              {
+                "type": "text",
+                "name": "drop_away_rate",
+                "label": "倒挂率:"
+              },
+              {
+                "type": "select",
+                "name": "function_type",
+                "label": "设备类型:",
+                "options": [
+                  {
+                    "label": "人像卡口",
+                    "value": "02"
+                  },
+                  {
+                    "label": "超级卡口",
+                    "value": "25"
+                  },
+                  {
+                    "label": "车辆卡口",
+                    "value": "01"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "primary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "alias",
+              "label": "设备名称",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "id",
+              "label": "国标ID",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "through_total",
+              "label": "抓拍数据量",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "delay_total",
+              "label": "延迟量",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "delay_rate",
+              "label": "延迟率",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "type": "text",
+              "name": "drop_away_total",
+              "label": "倒挂量",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "drop_away_rate",
+              "label": "倒挂率",
+              "width": 140
+            },
+            {
+              "type": "operation",
+              "label": "操作",
+              "width": 100,
+              "buttons": [
+                {
+                  "label": "过车查询",
+                  "type": "action",
+                  "level": "link"
+                }
+              ],
+              "toggled": true
+            }
+          ]
+        }
+      },
+      {
+        "title": "数据一致性监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_view/search",
+            "data": {
+              "&": "$$",
+              "name": "face",
+              "type": "consistency_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              },
+              {
+                "type": "select",
+                "name": "status",
+                "label": "设备状态:",
+                "options": [
+                  {
+                    "label": "未上传",
+                    "value": "0"
+                  },
+                  {
+                    "label": "已上传",
+                    "value": "1"
+                  }
+                ]
+              },
+              {
+                "type": "select",
+                "name": "function_type",
+                "label": "设备类型:",
+                "options": [
+                  {
+                    "label": "人像卡口",
+                    "value": "02"
+                  },
+                  {
+                    "label": "超级卡口",
+                    "value": "25"
+                  },
+                  {
+                    "label": "车辆卡口",
+                    "value": "01"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "name",
+                "label": "数据最近上传:"
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "primary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "alias",
+              "label": "设备名称",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "id",
+              "label": "国标ID",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "through_total",
+              "label": "抓拍量",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "status",
+              "label": "设备状态",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "upload_at",
+              "label": "最近上传时间",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "type": "text",
+              "name": "is_duplicate",
+              "label": "是否重复",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "duplicate_total",
+              "label": "重复数据量",
+              "width": 140
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

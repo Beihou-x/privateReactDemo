@@ -1,0 +1,122 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": {
+    "type": "crud",
+    "api": {
+      "method": "post",
+      "url": "/ui/permission/search",
+      "data": {
+        "inst_time": "${inst_time | split}",
+        "offset": "${offset}",
+        "limit": "${limit}",
+        "id": "${id}",
+        "name": "${name}"
+      },
+      "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+    },
+    "pageField": "offset",
+    "perPageField": "limit",
+    "filter": {
+      "title": "",
+      "controls": [
+        {
+          "type": "text",
+          "name": "name",
+          "label": "权限名称:"
+        }
+      ]
+    },
+    "headerToolbar": [
+      {
+        "type": "button",
+        "label": "新增",
+        "actionType": "dialog",
+        "reload": "device.crud",
+        "dialog": {
+          "title": "新增",
+          "body": [
+            {
+              "type": "form",
+              "mode": "horizontal",
+              "horizontal": {
+                "left":"col-sm-3",
+                "right":"col-sm-9"
+              },
+              "controls": [
+                {
+                  "type": "text",
+                  "name": "name",
+                  "required": true,
+                  "label": "权限名称:"
+                },
+                {
+                  "type": "textarea",
+                  "name": "code",
+                  "required": true,
+                  "label": "权限描述:"
+                },
+                {
+                  "type": "select",
+                  "name": "type",
+                  "required": true,
+                  "label": "权限种类:",
+                  "options": [
+                    {
+                      "value": 1,
+                      "label": "系统"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "footerToolbar": [
+      "statistics",
+      "switch-per-page",
+      "pagination"
+    ],
+    "columns": [
+      {
+        "name": "name",
+        "label": "权限名称",
+        "width": 200,
+        "type": "text"
+      },
+      {
+        "name": "description",
+        "label": "权限描述",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "updated_at",
+        "label": "更新时间",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "type": "operation",
+        "label": "操作",
+        "width": 100,
+        "buttons": [
+          {
+            "label": "删除",
+            "type": "action",
+            "level": "link",
+            "actionType": "ajax",
+            "confirmText": "您确认要删除?",
+            "api": {
+              "method": "delete",
+              "url": "/ui/permission/${id}"
+            }
+          }
+        ],
+        "toggled": true
+      }
+    ]
+  }
+}

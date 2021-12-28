@@ -1,0 +1,22 @@
+.checkbox {
+  padding: 0 20px;
+  border: 1px solid #000;
+  position: relative;
+  text-align: center;
+
+  :global {
+    .ant-checkbox {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+    }
+  }
+}
+
+.checkbox-disable {
+  :global {
+    .ant-checkbox {
+      display: none;
+    }
+  }
+}

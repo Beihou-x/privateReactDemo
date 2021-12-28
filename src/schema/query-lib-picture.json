@@ -1,0 +1,247 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": [
+    {
+      "type": "crud",
+      "mode": "cards",
+      "api": {
+        "method": "post",
+        "url": "/api/v2/images/search",
+        "data": {
+          "&": "$$",
+          "shot_time": "${shot_time | split}"
+        },
+        "responseData": {
+          "&": "$$",
+          "items": "${items | default:[]}"
+        },
+        "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit * 1   }\n }"
+      },
+      "pageField": "offset",
+      "perPageField": "limit",
+      "filter": {
+        "title": "",
+        "controls": [
+          {
+            "type": "date-range",
+            "name": "shot_time",
+            "label": "抓拍时间:"
+          },
+          {
+            "type": "text",
+            "name": "place",
+            "label": "抓拍地点:"
+          },
+          {
+            "type": "text",
+            "name": "device_id",
+            "label": "设备编码:"
+          },
+          {
+            "type": "select",
+            "name": "type",
+            "label": "图片类型:",
+            "options": [
+              {
+                "label": "jpg",
+                "value": "1"
+              },
+              {
+                "label": "png",
+                "value": "2"
+              },
+              {
+                "label": "gif",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "name": "file_format",
+            "label": "文件格式:",
+            "options": [
+              {
+                "label": "图片",
+                "value": "1"
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "type": "submit",
+            "label": "查询",
+            "level": "primary"
+          },
+          {
+            "type": "reset",
+            "label": "重置",
+            "level": "primary"
+          }
+        ]
+      },
+      "headerToolbar": [],
+      "footerToolbar": [
+        "statistics",
+        "switch-per-page",
+        "pagination"
+      ],
+      "card": {
+        "body": [
+          {
+            "type": "image",
+            "className": "w-full m-b-sm",
+            "src": "${storage_path}",
+            "thumbMode": "cover"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${device_id}"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${place}"
+          },
+          {
+            "type": "tpl",
+            "tpl": "${shot_time | date:YYYY-MM-DD HH\\:mm\\:ss}"
+          }
+        ],
+        "actions": [
+          {
+            "type": "button",
+            "label": "查看",
+            "actionType": "drawer",
+            "drawer": {
+              "position": "right",
+              "size": "md",
+              "title": "详细信息",
+              "body": [
+                {
+                  "type": "grid",
+                  "className": "m-b-md",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "抓拍地点: ${place}",
+                      "md": 12
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "抓拍时间: ${shot_time | date:YYYY-MM-DD HH\\:mm\\:ss}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "设备编码: ${device_id}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "事件排序: ${event_sort}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "存储路径: ${storage_path}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "图片类型: ${type}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "文件格式: ${file_format}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "长度: ${width}",
+                      "md": 6
+                    },
+                    {
+                      "type": "plain",
+                      "text": "高度: ${height}",
+                      "md": 6
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "更新时间: ${updated | date:YYYY-MM-DD HH\\:mm\\:ss}"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "plain",
+                      "text": "详情照片:"
+                    }
+                  ]
+                },
+                {
+                  "type": "grid",
+                  "className": "m-b-sm",
+                  "columns": [
+                    {
+                      "type": "image",
+                      "src": "imgUrl+${storage_path}"
+                    }
+                  ]
+                }
+              ],
+              "actions": []
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

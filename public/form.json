@@ -1,0 +1,120 @@
+{
+  "body": [
+    {
+      "type": "form",
+      "initApi": "/api/v2/device/111",
+      "labelCol": { "span": 6 },
+      "wrapperCol": { "span": 8 },
+      "controls": [
+        {
+          "type": "input",
+          "name": "function_type",
+          "label": "名称",
+          "tips": "默认描述信息"
+        },
+        {
+          "type": "datepicker",
+          "name": "date",
+          "label": "时间选择",
+          "tips": "描述信息"
+        }
+      ],
+      "api": {
+        "url": "/api/v2/device",
+        "method": "POST"
+      }
+    },
+    {
+      "type": "table",
+      "api": "/api/v2/device/search",
+      "columns": [
+        {
+          "title": "申请编号",
+          "dataIndex": [],
+          "width": 100
+        },
+        {
+          "title": "国标ID",
+          "dataIndex": "id"
+        },
+        {
+          "title": "设备名称",
+          "dataIndex": "alias",
+          "width": 200
+        },
+        {
+          "title": "经度",
+          "dataIndex": "longitude",
+          "width": 80
+        },
+        {
+          "title": "纬度",
+          "dataIndex": "latitude",
+          "width": 80
+        },
+        {
+          "title": "地点",
+          "dataIndex": "place"
+        },
+        {
+          "title": "设备IP",
+          "dataIndex": "ip_addr",
+          "width": 100
+        },
+        {
+          "title": "设备厂商",
+          "dataIndex": "manufactor",
+          "width": 100
+        },
+        {
+          "title": "行政区划",
+          "dataIndex": "place_code",
+          "width": 200
+        },
+        {
+          "title": "标签",
+          "dataIndex": "tag"
+        },
+        {
+          "title": "接入来源",
+          "dataIndex": "source_id",
+          "width": 100
+        },
+        {
+          "title": "卡口类型",
+          "dataIndex": "function_type",
+          "width": 100
+        },
+        {
+          "title": "是否注册一机一档",
+          "dataIndex": "is_register",
+          "width": 80
+        },
+        {
+          "title": "是否注册人像引擎",
+          "dataIndex": "is_vendor_register",
+          "width": 80
+        },
+        {
+          "title": "最后抓拍时间",
+          "dataIndex": "update_at"
+        },
+        {
+          "title": "最后上传时间",
+          "dataIndex": "upload_at"
+        },
+        {
+          "title": "分组",
+          "dataIndex": "group",
+          "width": 200
+        },
+        {
+          "title": "图片统计",
+          "dataIndex": "total",
+          "width": 80
+        }
+      ],
+      "rowSelection": false
+    }
+  ]
+}

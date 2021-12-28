@@ -1,0 +1,174 @@
+.content {
+  width: 100%;
+  height: 1155px;
+  display: flex;
+  padding: 24px;
+  background: url("@/assets/dashboard/system-bg.png") no-repeat;
+  background-size: 100% 100%;
+
+  .leftPart {
+    width: 1114px;
+    height: 100%;
+
+    .leftTop {
+      height: 220px;
+      box-shadow: 0px 0px 16px 12px rgba(35, 137, 234, 0.2) inset;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .leftCenter {
+      height: 483px;
+      box-shadow: 0px 0px 16px 12px rgba(35, 137, 234, 0.2) inset;
+      border-radius: 2px;
+      margin-bottom: 24px;
+
+      .todayData {
+        padding: 10px 20px 0 20px;
+        width: 600px;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .todayDataTitle {
+          color: #C7CCD0;
+        }
+
+        .todayDataValue {
+          font-size: 32px;
+          color: #fff;
+        }
+
+        .todayDataArrow {
+          height: 15px;
+          margin: 0 10px;
+        }
+      }
+    }
+
+    .leftBottom {
+      height: 348px;
+      box-shadow: 0px 0px 16px 12px rgba(35, 137, 234, 0.2) inset;
+      border-radius: 2px;
+
+      .dataAbnormal {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 24px;
+      }
+    }
+  }
+
+  .rightPart {
+    width: 734px;
+    height: 100%;
+    margin-left: 24px;
+
+    .rightTop {
+      height: 730px;
+      box-shadow: 0px 0px 16px 12px rgba(35, 137, 234, 0.2) inset;
+      border-radius: 2px;
+      margin-bottom: 24px;
+
+      .dataQualityItem {
+        height: 226px;
+        padding-top: 10px;
+
+        .dataQualityTitle {
+          font-size: 12px;
+          padding-left: 15px;
+          line-height: 20px;
+        }
+      }
+
+      .dataQualityContent {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+
+        .dashboard {
+          width: 190px;
+        }
+
+        .bar {
+          width: 540px;
+        }
+      }
+    }
+
+    .rightBottom {
+      box-shadow: 0px 0px 16px 12px rgba(35, 137, 234, 0.2) inset;
+      border-radius: 2px;
+      height: 348px;
+    }
+  }
+}
+
+.title {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  font-size: 16px;
+  color: #fff;
+  border-bottom: 1px solid #525b68;
+}
+
+.rate {
+  width: 200px;
+
+  .rankTitle {
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+
+
+  .Content {
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+
+    .rateIndex {
+      width: 20px;
+      height: 20px;
+      line-height: 17px;
+      text-align: center;
+      background: rgba(158, 230, 185, 0.3);
+      border-radius: 50%;
+      border: 1px solid #9EE6B9;
+      font-size: 12px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #9EE6B9;
+      margin-right: 10px;
+    }
+
+    .rateIndex1 {
+      background: rgba(71, 86, 115, 0.3);
+      border: 1px solid #475673;
+      color: rgba(255, 255, 255, .8);
+    }
+
+    .rateName {
+      width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: rgba(255, 255, 255, .8);
+      font-size: 14px;
+    }
+
+    :global {
+      .ant-progress-text {
+        color: #fff;
+      }
+    }
+  }
+}

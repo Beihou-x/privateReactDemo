@@ -1,0 +1,402 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": {
+    "type": "crud",
+    "draggable": true,
+    "api": {
+      "method": "post",
+      "url": "/ui/camera/search",
+      "data": {
+        "inst_time": "${inst_time | split}",
+        "offset": "${offset}",
+        "limit": "${limit}",
+        "id": "${id}",
+        "name": "${name}"
+      },
+      "responseData": {
+        "&": "$$",
+        "items": "${items | default:[]}"
+      },
+      "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+    },
+    "pageField": "offset",
+    "perPageField": "limit",
+    "filter": {
+      "title": "",
+      "controls": [
+        {
+          "type": "text",
+          "name": "id",
+          "label": "设备编码:"
+        },
+        {
+          "type": "text",
+          "name": "name",
+          "label": "设备名称:"
+        },
+        {
+          "type": "date-range",
+          "name": "inst_time",
+          "label": "安装时间:"
+        }
+      ],
+      "actions": [
+        {
+          "type": "submit",
+          "label": "搜索条件",
+          "level": "primary"
+        },
+        {
+          "type": "submit",
+          "label": "查询",
+          "level": "primary"
+        },
+        {
+          "type": "reset",
+          "label": "重置",
+          "level": "secondary"
+        }
+      ]
+    },
+    "bulkActions": [
+      {
+        "label": "批量删除",
+        "actionType": "ajax",
+        "api": {
+          "method": "delete",
+          "url": "/ui/batch/camera",
+          "data": {
+            "ids": "${ids | split}"
+          }
+        },
+        "reload": "device.crud",
+        "confirmText": "确定要批量删除?"
+      }
+    ],
+    "headerToolbar": [
+      {
+        "type": "button",
+        "label": "新增",
+        "actionType": "dialog",
+        "reload": "device.crud",
+        "dialog": {
+          "title": "新增",
+          "size": "lg",
+          "body": [
+            {
+              "type": "form",
+              "mode": "horizontal",
+              "controls": [
+                {
+                  "type": "tpl",
+                  "tpl": "设备所属类型:"
+                },
+                {
+                  "type": "select",
+                  "name": "type",
+                  "required": true,
+                  "placeholder": "请选择类型",
+                  "label": "选择类型:",
+                  "options": [
+                    {
+                      "value": 1,
+                      "label": "公安自建"
+                    },
+                    {
+                      "value": 2,
+                      "label": "公安社会面"
+                    },
+                    {
+                      "value": 3,
+                      "label": "移动"
+                    }
+                  ]
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "group",
+                  "controls": [
+                    {
+                      "type": "text",
+                      "name": "name",
+                      "required": true,
+                      "label": "设备名称:"
+                    },
+                    {
+                      "type": "text",
+                      "name": "code",
+                      "required": true,
+                      "label": "设备编码:"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "controls": [
+                    {
+                      "type": "text",
+                      "name": "deivce_type",
+                      "label": "设备型号:"
+                    },
+                    {
+                      "type": "select",
+                      "name": "man",
+                      "required": true,
+                      "label": "设备厂商:",
+                      "options": [
+                        {
+                          "value": 1,
+                          "label": "海康"
+                        },
+                        {
+                          "value": 2,
+                          "label": "大华"
+                        },
+                        {
+                          "value": 3,
+                          "label": "依图"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "controls": [
+                    {
+                      "type": "text",
+                      "name": "status",
+                      "required": true,
+                      "label": "设备状态:",
+                      "options": [
+                        {
+                          "value": 1,
+                          "label": "在用"
+                        },
+                        {
+                          "value": 2,
+                          "label": "维修"
+                        },
+                        {
+                          "value": 3,
+                          "label": "拆除"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "name": "g",
+                      "label": "设备功能集:"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "controls": [
+                    {
+                      "type": "text",
+                      "name": "lat",
+                      "required": true,
+                      "label": "经度:"
+                    },
+                    {
+                      "type": "text",
+                      "name": "lng",
+                      "required": true,
+                      "label": "纬度:"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "controls": [
+                    {
+                      "type": "text",
+                      "name": "ipv4",
+                      "label": "IPV4:"
+                    },
+                    {
+                      "type": "text",
+                      "name": "ipv6",
+                      "label": "IPV6:"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "controls": [
+                    {
+                      "type": "text",
+                      "name": "port",
+                      "label": "设备端口:"
+                    },
+                    {
+                      "type": "select",
+                      "name": "device_types",
+                      "label": "设备建设类型:",
+                      "options": [
+                        {
+                          "value": 1,
+                          "label": "自建"
+                        },
+                        {
+                          "value": 2,
+                          "label": "烽火台"
+                        },
+                        {
+                          "value": 3,
+                          "label": "风铃塔"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "controls": [
+                    {
+                      "type": "text",
+                      "name": "username",
+                      "required": true,
+                      "label": "登陆用户名:"
+                    },
+                    {
+                      "type": "text",
+                      "name": "password",
+                      "required": true,
+                      "label": "登陆密码:"
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "controls": [
+                    {
+                      "type": "text",
+                      "name": "tl",
+                      "required": true,
+                      "label": "最高分辨率:"
+                    },
+                    {
+                      "type": "text",
+                      "name": "time",
+                      "required": true,
+                      "label": "录像保存时间:"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "bulkActions"
+    ],
+    "footerToolbar": [
+      "statistics",
+      "switch-per-page",
+      "pagination"
+    ],
+    "columns": [
+      {
+        "name": "type",
+        "label": "设备所属类型",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "id",
+        "label": "设备编码",
+        "width": 200,
+        "type": "text"
+      },
+      {
+        "name": "name",
+        "label": "设备名称",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "manufactor",
+        "label": "设备厂商",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "label": "设备状态",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "unit",
+        "label": "行政区域",
+        "type": "text",
+        "width": 100
+      },
+      {
+        "name": "address",
+        "label": "安装地址",
+        "type": "text",
+        "width": 100
+      },
+      {
+        "type": "text",
+        "name": "longitude",
+        "label": "经度",
+        "width": 100
+      },
+      {
+        "type": "text",
+        "name": "latitude",
+        "label": "纬度",
+        "width": 100
+      },
+      {
+        "type": "text",
+        "name": "no",
+        "label": "批次编号",
+        "width": 100
+      },
+      {
+        "type": "text",
+        "name": "result",
+        "label": "校验结果",
+        "width": 100
+      },
+      {
+        "type": "operation",
+        "label": "操作",
+        "width": 100,
+        "buttons": [
+          {
+            "type": "button",
+            "actionType": "dialog",
+            "tooltip": "编辑"
+          },
+          {
+            "type": "button",
+            "actionType": "dialog",
+            "tooltip": "点位"
+          },
+          {
+            "type": "button",
+            "actionType": "dialog",
+            "tooltip": "详情"
+          },
+          {
+            "type": "button",
+            "actionType": "ajax",
+            "tooltip": "删除",
+            "confirmText": "您确认要删除?",
+            "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id"
+          }
+        ],
+        "toggled": true
+      }
+    ]
+  }
+}

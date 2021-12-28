@@ -1,0 +1,139 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": {
+    "type": "crud",
+    "api": {
+      "method": "post",
+      "url": "/api/v2/imsi/search",
+      "data": {
+        "&": "$$",
+        "collect_time": "${collect_time | date:YYYY-MM-DD}"
+      },
+      "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit * 1   }\n }"
+    },
+    "responseData": {
+      "&": "$$",
+      "items": "${items | default:[]}"
+    },
+    "pageField": "offset",
+    "perPageField": "limit",
+    "filter": {
+      "title": "",
+      "controls": [
+        {
+          "type": "text",
+          "name": "device_id",
+          "label": "设备编号:"
+        },
+        {
+          "type": "text",
+          "name": "mac",
+          "label": "MAC地址:"
+        },
+        {
+          "type": "text",
+          "name": "name",
+          "label": "姓名:"
+        },
+        {
+          "type": "text",
+          "name": "mobile_num",
+          "label": "手机号:"
+        },
+        {
+          "type": "text",
+          "name": "id_number",
+          "label": "证件号码:"
+        }
+      ],
+      "actions": [
+        {
+          "type": "submit",
+          "label": "查询",
+          "level": "primary"
+        },
+        {
+          "type": "reset",
+          "label": "重置",
+          "level": "secondary"
+        }
+      ]
+    },
+    "headerToolbar": [],
+    "footerToolbar": [
+      "statistics",
+      "switch-per-page",
+      "pagination"
+    ],
+    "columns": [
+      {
+        "name": "network_id",
+        "label": "记录编号",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "device_id",
+        "label": "设备编号",
+        "width": 200,
+        "type": "text",
+        "className": "word-break"
+      },
+      {
+        "name": "imei",
+        "label": "国际移动设备识别码",
+        "width": 200,
+        "type": "text"
+      },
+      {
+        "name": "imsi",
+        "label": "国际移动用户识别码",
+        "type": "text",
+        "width": 100
+      },
+      {
+        "name": "mac",
+        "label": "MAC地址",
+        "type": "text",
+        "width": 100
+      },
+      {
+        "type": "text",
+        "name": "collect_time",
+        "label": "采集时间",
+        "width": 140
+      },
+      {
+        "type": "text",
+        "name": "field_intensity",
+        "label": "场强",
+        "width": 140
+      },
+      {
+        "type": "text",
+        "name": "terminal_brand",
+        "label": "终端品牌",
+        "width": 140
+      },
+      {
+        "type": "text",
+        "name": "mobile_num",
+        "label": "手机号码",
+        "width": 140
+      },
+      {
+        "type": "text",
+        "name": "id_number",
+        "label": "证件号码",
+        "width": 140
+      },
+      {
+        "type": "text",
+        "name": "name",
+        "label": "姓名",
+        "width": 140
+      }
+    ]
+  }
+}

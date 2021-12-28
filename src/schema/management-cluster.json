@@ -1,0 +1,58 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": {
+        "type": "crud",
+        "mode": "cards",
+        "api": {
+        "method": "post",
+        "url": "/api/v2/service/search",
+        "data": {
+            "&": "$$",
+            "types": ["ACCESS","FORWARD","ASYNC_FORWARD"]
+        },
+        "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+        },
+        "pageField": "offset",
+        "perPageField": "limit",
+        "headerToolbar": [
+            {
+                "type": "tpl",
+                "tpl": "接入云"
+            },
+            {
+                "type": "tpl",
+                "tpl": "接入服务：3   转发服务：2"
+            }
+        ],
+        "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+        ],
+        "card": {
+        "header": {
+            "title": "${name}",
+            "avatar": ""
+        },
+        "body": [
+            {
+                "type": "tpl",
+                "tpl": "IP: ${ip}"
+            },
+            {
+                "type": "tpl",
+                "tpl": "版本: ${version}"
+            },
+            {
+                "type": "tpl",
+                "tpl": "当前状态: ${status}"
+            },
+            {
+                "type": "tpl",
+                "tpl": "设备状态: ${status}"
+            }
+        ]
+        }
+    }
+}

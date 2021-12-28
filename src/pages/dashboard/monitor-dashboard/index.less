@@ -1,0 +1,41 @@
+.monitor-dashboard {
+  width: 100vw;
+  //background: url("../../../assets/background-3.png") no-repeat;
+
+  header {
+    display: flex;
+    justify-content: space-around;
+    height: 8vh;
+    font-size: 36px;
+    color: rgb(198, 243, 228);
+  }
+
+  &-card {
+    //background-color: rgba(2, 63, 85, 0.5);
+    border-width: 0;
+    border-radius: 10px;
+    height: 70vh;
+
+    :global {
+      .ant-card-head {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+
+    .rank {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid #4a5c7b;
+      margin-right: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": {
+    "type": "crud",
+    "api": {
+      "method": "post",
+      "url": "/api/v2/protocol/search",
+      "data": {
+        "offset": "${offset}",
+        "limit": "${limit}"
+      },
+      "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+    },
+    "pageField": "offset",
+    "perPageField": "limit",
+    "filter": {
+      "title": "",
+      "controls": [
+        {
+          "type": "text",
+          "name": "name",
+          "label": "名称:"
+        },
+        {
+          "type": "select",
+          "name": "type",
+          "label": "协议类型:",
+          "options": [
+            {
+              "label": "HTTP",
+              "value": "HTTP"
+            },
+            {
+              "label": "HTTPS",
+              "value": "HTTPS"
+            },
+            {
+              "label": "TCP",
+              "value": "TCP"
+            },
+            {
+              "label": "MQTT",
+              "value": "MQTT"
+            },
+            {
+              "label": "WSDL",
+              "value": "WSDL"
+            },
+            {
+              "label": "RPC",
+              "value": "RPC"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "submit",
+          "label": "查询",
+          "level": "primary"
+        },
+        {
+          "type": "reset",
+          "label": "重置",
+          "level": "primary"
+        }
+      ]
+    },
+    "headerToolbar": [],
+    "footerToolbar": [
+      "statistics",
+      "switch-per-page",
+      "pagination"
+    ],
+    "columns": [
+      {
+        "name": "name",
+        "label": "协议名称",
+        "width": 200,
+        "type": "text"
+      },
+      {
+        "name": "type",
+        "label": "协议类型",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "type": "operation",
+        "label": "操作",
+        "width": 100,
+        "buttons": [
+          {
+            "label": "编辑",
+            "level": "link"
+          },
+          {
+            "label": "详情",
+            "level": "link"
+          }
+        ],
+        "toggled": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "type": "page",
+  "name": "device",
+  "body":  {
+    "type": "tabs",
+    "mode": "vertical",
+    "tabs": [
+      {
+        "title": "业务标签总览",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_overview/search",
+            "data": {
+              "&": "$$",
+              "id": "${id}",
+              "name": "bussiness"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "place_code",
+              "label": "组织区域",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "total_01",
+              "label": "01-反恐重点目标",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "total_02",
+              "label": "02-环沪通道",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "total_03",
+              "label": "03-环浙通道",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "total_04",
+              "label": "04-环鲁通道",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "type": "text",
+              "name": "total_05",
+              "label": "05-环皖通道",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "total_06",
+              "label": "06-环省防控圈",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "total_07",
+              "label": "07-环市防控圈",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "total_08",
+              "label": "08-环县防控圈",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "total_09",
+              "label": "09-政治中心区防控圈",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "manufactor_type",
+              "label": "总计",
+              "width": 140
+            }
+          ],
+          "affixRow": [
+            {
+              "type": "text",
+              "text": "总计"
+            },
+            {
+              "type": "tpl",
+              "tpl": "${rows|pick:version|sum}"
+            }
+          ]
+        }
+      },
+      {
+        "title": "业务标签设备类型分布监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_view/search",
+            "data": {
+              "&": "$$",
+              "name": "bussiness",
+              "type": "bussiness_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "primary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "name",
+              "label": "业务标签",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "super_total",
+              "label": "超级卡口设备数",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "super_copy_rate",
+              "label": "超级卡口设备覆盖率",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "face_total",
+              "label": "人像卡口设备数",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "face_copy_rate",
+              "label": "人像卡口设备覆盖率",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "type": "text",
+              "name": "normal_total",
+              "label": "普通卡口设备数",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "normal_copy_rate",
+              "label": "普通卡口设备覆盖率",
+              "width": 140
+            }
+          ]
+        }
+      },
+      {
+        "title": "自定义标签总览",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_overview/search",
+            "data": {
+              "&": "$$",
+              "name": "custom"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "place_code",
+              "label": "组织区域",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "total_01",
+              "label": "01-电动车被盗高发区",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "total_02",
+              "label": "02-打架斗殴高发区",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "total_03",
+              "label": "03-公安检查站",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "total_04",
+              "label": "04-城乡道路",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "total_05",
+              "label": "05-旅游景点",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "total_06",
+              "label": "06-少数民族聚集地",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "total_07",
+              "label": "07-乡村小卖铺",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "total_08",
+              "label": "08-行政中心区",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "total_09",
+              "label": "09-治安复杂区域",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            },
+            {
+              "name": "supplier",
+              "label": "总计",
+              "type": "text",
+              "width": 100,
+              "className": "word-break"
+            }
+          ]
+        }
+      },
+      {
+        "title": "自定义标签设备类型分布监测",
+        "body": {
+          "type": "crud",
+          "api": {
+            "method": "post",
+            "url": "/api/v2/quality_view/search",
+            "data": {
+              "&": "$$",
+              "name": "custom",
+              "type": "custom_view"
+            },
+            "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+          },
+          "pageField": "offset",
+          "perPageField": "limit",
+          "filter": {
+            "title": "",
+            "controls": [
+              {
+                "type": "select",
+                "name": "place_code",
+                "label": "组织区域:",
+                "options": [
+                  {
+                    "label": "苏州市",
+                    "value": "320500"
+                  },
+                  {
+                    "label": "张家港市",
+                    "value": "320582"
+                  },
+                  {
+                    "label": "工业园区",
+                    "value": "320571"
+                  },
+                  {
+                    "label": "姑苏区",
+                    "value": "320508"
+                  },
+                  {
+                    "label": "吴江区",
+                    "value": "320509"
+                  },
+                  {
+                    "label": "太仓市",
+                    "value": "320585"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "submit",
+                "label": "查询",
+                "level": "primary"
+              },
+              {
+                "type": "reset",
+                "label": "重置",
+                "level": "primary"
+              }
+            ]
+          },
+          "headerToolbar": [],
+          "footerToolbar": [
+            "statistics",
+            "switch-per-page",
+            "pagination"
+          ],
+          "columns": [
+            {
+              "name": "name",
+              "label": "自定义标签",
+              "width": 200,
+              "type": "text"
+            },
+            {
+              "name": "super_total",
+              "label": "超级卡口设备数",
+              "width": 100,
+              "type": "text"
+            },
+            {
+              "name": "super_copy_rate",
+              "label": "超级卡口设备覆盖率",
+              "width": 200,
+              "type": "text",
+              "className": "word-break"
+            },
+            {
+              "name": "face_total",
+              "label": "人像卡口设备数",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "name": "face_copy_rate",
+              "label": "人像卡口设备覆盖率",
+              "type": "text",
+              "width": 100
+            },
+            {
+              "type": "text",
+              "name": "normal_total",
+              "label": "普通卡口设备数",
+              "width": 140
+            },
+            {
+              "type": "text",
+              "name": "normal_copy_rate",
+              "label": "普通卡口设备覆盖率",
+              "width": 140
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

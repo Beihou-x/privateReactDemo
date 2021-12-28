@@ -1,0 +1,332 @@
+@import "~antd/es/style/themes/default.less";
+
+@font-face {
+  font-family: Source Han Sans CN;
+  src: url("@/assets/font/SourceHanSansCN-Heavy-2.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  height: 100vh;
+  overflow: auto;
+  background: @layout-body-background;
+  .headTitle {
+    height: 4vh;
+    color: #ffffff;
+    font-size: 20px;
+    background: rgba(43, 53, 72, 0.5);
+    padding-left: 30px;
+    line-height: 4vh;
+  }
+  .mainContent {
+    display: flex;
+    height: 96vh;
+  }
+
+  // justify-content: flex-end;
+  .leftContent {
+    width: 50vw;
+    height: 96vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .projectTitleContent {
+      width: 785px;
+      height: 710px;
+      background-image: url("@/assets/project-title.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      .title {
+        line-height: 180px;
+        background: linear-gradient(
+          270deg,
+          rgba(43, 53, 72, 0) 0%,
+          #2b3548 49%,
+          rgba(43, 53, 72, 0) 100%
+        );
+        color: #fff;
+        font-size: 50px;
+        font-weight: 500;
+        letter-spacing: 14px;
+      }
+    }
+  }
+}
+
+.lang {
+  width: 100%;
+  height: 40px;
+  line-height: 44px;
+  text-align: right;
+
+  :global(.ant-dropdown-trigger) {
+    margin-right: 24px;
+  }
+}
+
+.content {
+  padding: 32px 0;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: @screen-md-min) {
+  .container {
+    background-image: url("@/assets/login-background.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .content {
+    padding: 32px 0 24px;
+  }
+}
+
+.top {
+  text-align: center;
+}
+
+.header {
+  //height: 44px;
+  //line-height: 44px;
+  a {
+    text-decoration: none;
+  }
+}
+
+.logo {
+  height: 44px;
+  margin-right: 16px;
+  vertical-align: top;
+}
+
+.title {
+  position: relative;
+  top: 2px;
+  color: @heading-color;
+  font-weight: 600;
+  font-size: 33px;
+  font-family: Source Han Sans CN, Avenir, "Helvetica Neue", Arial, Helvetica,
+    sans-serif;
+}
+
+.desc {
+  margin-top: 12px;
+  margin-bottom: 40px;
+  color: @text-color-secondary;
+  font-size: @font-size-base;
+}
+
+@media screen and (max-width: @screen-xl-max) {
+  .content {
+    width: 60vw;
+    font-size: 40px;
+  }
+
+  .header {
+    //height: 44px;
+    //line-height: 44px;
+    a {
+      text-decoration: none;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 400;
+      color: #fff;
+      //height: 50px;
+      margin-bottom: 5vh;
+      font-family: Source Han Sans CN;
+    }
+  }
+}
+
+.main {
+  width: 420px;
+  height: 470px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  justify-content: space-evenly;
+  background-color: #2b3548;
+  border-radius: 5px;
+  margin-left: 150px;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.5);
+  .userLogin {
+    text-align: center;
+    color: #fff;
+    // font-size: 20px;
+    font-size: 24px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    letter-spacing: 10px;
+  }
+
+  @media screen and (max-width: @screen-sm) {
+    width: 95%;
+  }
+
+  .icon {
+    margin-left: 16px;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+
+  .other {
+    margin-top: 24px;
+    line-height: 22px;
+    text-align: left;
+
+    .register {
+      float: right;
+    }
+  }
+
+  svg {
+    font-size: 24px;
+  }
+
+  :global {
+    .antd-pro-login-submit {
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    .ant-form-item {
+      text-align: center;
+    }
+
+    .ant-btn-primary {
+      font-size: 18px;
+      // border-radius: 22px;
+      width: 320px;
+      height: 45px;
+      border-color: #346ca0 !important;
+      background: #346ca0 !important;
+      font-weight: 400;
+      letter-spacing: 50px;
+      padding-left: 50px;
+    }
+
+    .anticon svg {
+      color: #346ca0 !important;
+      font-size: 20px;
+    }
+
+    .ant-form {
+      width: 420px;
+    }
+
+    .ant-btn-loading-icon svg {
+      color: #eee;
+    }
+
+    .ant-input-affix-wrapper {
+      border-radius: 3px;
+      position: relative;
+      display: inline-block;
+      width: 320px !important;
+      min-width: 0;
+      padding: 4px 11px;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 14px;
+      line-height: 1.5715;
+      background-color: #191f2a !important;
+      background-image: none;
+      border: none !important;
+      border-radius: 2px;
+      transition: all 0.3s;
+      display: inline-flex;
+    }
+
+    .ant-form-item-explain.ant-form-item-explain-error {
+      color: #ff4d4f;
+      text-align: left;
+      margin-left: 52px;
+    }
+    .ant-form-item-has-error .ant-input,
+    .ant-form-item-has-error .ant-input-affix-wrapper,
+    .ant-form-item-has-error .ant-input:hover,
+    .ant-form-item-has-error .ant-input-affix-wrapper:hover {
+      background: #eeeeee;
+    }
+
+    .ant-input-affix-wrapper:hover,
+    .ant-input-affix-wrapper:focus {
+      border-color: #99a1ed;
+    }
+
+    .ant-input-affix-wrapper:focus,
+    .ant-input-affix-wrapper-focused {
+      box-shadow: 0 0 0 2px rgba(153, 161, 237, 0.2);
+    }
+
+    .ant-input {
+      // border-radius: 50px;
+      border: 1px solid #fff;
+      height: 45px;
+      width: 320px;
+      background: #191f2a !important;
+      padding-left: 26px;
+      color: #fff;
+      font-size: 14px !important;
+
+      &::placeholder {
+        color: #fff;
+        font-size: 18px;
+        line-height: 30px;
+        padding-top: 2vh;
+      }
+    }
+  }
+
+  @media screen and (max-width: @screen-xl-max) {
+    :global {
+      // .ant-input {
+      //   height: 8vh;
+      //   background: transparent;
+      //   padding-left: 2vw;
+      //   color: #fff;
+      //   font-size: 32px;
+
+      //   &::placeholder {
+      //     color: #fff;
+      //     font-size: 32px;
+      //     color: #ececec;
+      //     line-height: 8vh;
+      //     padding-top: 2vh;
+      //   }
+      // }
+
+      .ant-btn-primary {
+        font-size: 18px;
+        // border-radius: 22px;
+        width: 320px;
+        height: 45px;
+        border-color: #346ca0 !important;
+        background: #346ca0 !important;
+        font-weight: 400;
+        letter-spacing: 50px;
+        padding-left: 50px;
+        text-align: center;
+      }
+    }
+  }
+}

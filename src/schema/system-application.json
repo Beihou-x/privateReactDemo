@@ -1,0 +1,171 @@
+{
+  "type": "page",
+  "name": "device",
+  "body": {
+    "type": "crud",
+    "api": {
+      "method": "post",
+      "url": "/api/v2/application/search",
+      "data": {
+        "offset": "${offset}",
+        "limit": "${limit}"
+      },
+      "requestAdaptor": "return {\n    ...api,\n    data: {\n        ...api.data,   \n        offset: (api.data.offset - 1)*api.data.limit     \n , limit: api.data.limit   }\n }"
+    },
+    "pageField": "offset",
+    "perPageField": "limit",
+    "filter": {
+      "title": "",
+      "controls": [
+        {
+          "type": "text",
+          "name": "name",
+          "label": "应用名称:"
+        },
+        {
+          "type": "text",
+          "name": "name",
+          "label": "厂商类型:"
+        },
+        {
+          "type": "text",
+          "name": "mer",
+          "label": "供应商:"
+        }
+      ],
+        "actions": [
+          {
+            "type": "submit",
+            "label": "查询",
+            "level": "primary"
+          },
+          {
+            "type": "reset",
+            "label": "重置",
+            "level": "primary"
+          }
+        ]
+    },
+    "headerToolbar": [
+      {
+        "type": "button",
+        "label": "新增",
+        "actionType": "dialog",
+        "reload": "device.crud",
+        "dialog": {
+          "title": "新增",
+          "size": "md",
+          "body": [
+            {
+              "type": "form",
+              "horizontal": {
+                "left":"col-sm-5",
+                "right":"col-sm-5"
+              },
+              "controls": [
+                {
+                  "type": "text",
+                  "name": "name",
+                  "required": true,
+                  "label": "名称:"
+                },
+                {
+                  "type": "select",
+                  "name": "code",
+                  "required": true,
+                  "label": "厂商类型:",
+                  "options": [
+                    {
+                      "value": 1,
+                      "label": "引擎"
+                    },
+                    {
+                      "value": 2,
+                      "label": "基础"
+                    },
+                    {
+                      "value": 3,
+                      "label": "可视化"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "name": "name",
+                  "label": "供应商:"
+                },
+                {
+                  "type": "text",
+                  "name": "code",
+                  "label": "管理结构:"
+                },
+                {
+                  "type": "textarea",
+                  "name": "code",
+                  "label": "描述:"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "footerToolbar": [
+      "statistics",
+      "switch-per-page",
+      "pagination"
+    ],
+    "columns": [
+      {
+        "name": "name",
+        "label": "名称",
+        "width": 200,
+        "type": "text"
+      },
+      {
+        "name": "manager",
+        "label": "厂商类型",
+        "width": 100,
+        "type": "text"
+      },
+      {
+        "name": "supplier",
+        "label": "供应商",
+        "width": 200,
+        "type": "text",
+        "className": "word-break"
+      },
+      {
+        "name": "expired_at",
+        "label": "管理机构",
+        "type": "text",
+        "width": 100
+      },
+      {
+        "name": "expired_at",
+        "label": "创建人/创建时间",
+        "type": "text",
+        "width": 100
+      },
+      {
+        "type": "operation",
+        "label": "操作",
+        "width": 100,
+        "buttons": [
+          {
+            "label": "删除",
+            "type": "action",
+            "level": "link",
+            "actionType": "ajax",
+            "confirmText": "您确认要删除?",
+            "api": {
+              "method": "delete",
+              "url": "/api/v2/application/${id}"
+            }
+          }
+        ],
+        "toggled": true
+      }
+    ]
+  }
+}

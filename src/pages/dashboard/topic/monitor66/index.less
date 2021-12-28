@@ -1,0 +1,234 @@
+.commonFlex {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+}
+.commonFlexAround {
+  display: flex;
+  justify-content: space-around;
+}
+.commonFlexEnd {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+@color: #5bfcf4;
+@height: calc(100% - 40px);
+.personCarContent {
+  background: url("@/assets/dashboard/person-car-bg.png") no-repeat top left;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 80vh;
+  .commonFlex();
+
+  .left,
+  .right {
+    width: 23.5%;
+    height: 100%;
+  }
+  .center {
+    width: 53%;
+    height: 100%;
+  }
+  .part1,
+  .part2 {
+    width: 100%;
+    background: rgba(11, 44, 95, 0.3);
+  }
+  .part5,
+  .part6 {
+    width: 100%;
+    background: rgba(11, 44, 95, 0.5);
+  }
+  .common1 {
+    padding-bottom: 15px;
+    background: url("@/assets/dashboard/data-source-bg.png") no-repeat;
+    background-size: 100% 100%;
+    font-size: 14px;
+    font-family: Source Han Sans CN;
+    font-weight: bold;
+    color: #ffffff;
+    .commonFlexEnd();
+  }
+  .part1 {
+    height: 30%;
+    .part1_b {
+      height: @height;
+      .part1_1 {
+        height: 60%;
+        padding: 5px 14% 0 6%;
+        .commonFlex();
+        .part1_1_1 {
+          height: 100%;
+          width: 40%;
+          .part1_1_1_1 {
+            width: 100%;
+            height: 60%;
+            .common1();
+          }
+          .num {
+            text-align: center;
+            font-size: 22px;
+            color: @color;
+
+            span {
+              font-size: 12px;
+              color: #ffffff;
+              font-weight: 400;
+              img {
+                margin-top: -5px;
+                width: 8px;
+                height: 16px;
+                margin-left: 10px;
+                margin-right: 4px;
+              }
+            }
+          }
+          .num1 {
+            text-align: right;
+            margin-right: -20px;
+          }
+        }
+      }
+      .part1_2 {
+        height: 40%;
+      }
+    }
+
+    &-2 {
+      padding: 0 10px;
+    }
+  }
+  .part2 {
+    height: 68%;
+    margin-top: 12px;
+    .t_1 {
+      height: 65%;
+      .part2_1 {
+        padding: 10px 20px;
+        height: @height;
+        .part2_1_1 {
+          height: 50%;
+          .part2_1_1_1 {
+            padding: 0 60px;
+            height: calc(100% - 20px);
+            .commonFlexAround();
+            .part2_1_1_1_1 {
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+    .b_1 {
+      height: 35%;
+      .bar {
+        height: @height;
+      }
+    }
+  }
+  .part3 {
+    height: 25%;
+    padding: 20px 20px 0 20px;
+    .part3_1 {
+      height: 50%;
+      .commonFlex();
+      .part3_1_1 {
+        width: 30%;
+        display: flex;
+        .part3_1_1_r {
+          .label {
+            font-size: 16px;
+            color: #bdfcf7;
+          }
+          .value {
+            font-size: 26px;
+            font-weight: 500;
+            color: #79f8fd;
+          }
+        }
+      }
+    }
+  }
+  .part4 {
+    height: 75%;
+    text-align: center;
+    img {
+      width: 54%;
+    }
+  }
+  .part5 {
+    height: 60%;
+    .part5_1 {
+      height: @height;
+      padding: 10px 20px 0 20px;
+      .part5_1_1 {
+        height: 50%;
+        .rankBar {
+          height: calc(100% - 20px);
+        }
+      }
+    }
+  }
+  .part6 {
+    height: 38%;
+    margin-top: 12px;
+    .part6_1 {
+      height: @height;
+      padding: 10px 20px 0 20px;
+      .part6_1_1 {
+        display: flex;
+        height: 30%;
+        padding-bottom: 5px;
+
+        .part6_1_1_1 {
+          width: 40%;
+          .common1();
+        }
+        .part6_1_1_2 {
+          width: 50%;
+          .commonFlexEnd();
+          // line-height: 100px;
+          .num9 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #5bfcf4;
+            margin-right: 10px;
+            line-height: 35px;
+          }
+          img {
+            width: 8px;
+            height: 16px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+          }
+          .num10 {
+            font-weight: 500;
+            color: #5bfcf4;
+            margin-left: 5px;
+          }
+        }
+      }
+      .part6_1_2 {
+        height: 70%;
+        .part6_1_2_1 {
+          height: calc(100% - 20px);
+        }
+      }
+    }
+  }
+
+  .title {
+    width: 80%;
+    height: 40px;
+    line-height: 40px;
+    background: url("@/assets/dashboard/children-title-bg.png") no-repeat;
+    background-size: 100% 100%;
+    background-size: contain;
+    font-size: 20px;
+    font-family: Source Han Sans CN;
+    font-weight: bold;
+    color: @color;
+    padding-left: 6%;
+  }
+}

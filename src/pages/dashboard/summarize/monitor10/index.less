@@ -1,0 +1,126 @@
+.dataLine {
+  width: 100vw;
+  height: 80vh;
+  background: url("@/assets/dashboard/data-line-bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  .content {
+    padding: 14vh 5vw 14vh 10vw;
+    width: 100vw;
+    height: 80vh;
+    background: url("@/assets/dashboard/ll-line-bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+
+    .commonFlex {
+      display: flex;
+      align-items: center;
+    }
+    .commonFlexEnd {
+      display: flex;
+      align-items: flex-end;
+    }
+    .commonFlexStart {
+      display: flex;
+      align-items: flex-start;
+    }
+    .part {
+      height: 100%;
+      img {
+        width: 100%;
+      }
+      &1 {
+        .commonFlex();
+        width: 15%;
+      }
+      &2,
+      &4,
+      &6,
+      &8 {
+        width: 10%;
+        .lianlu2 {
+          height: 30%;
+          margin-bottom: 1vh;
+          .commonFlexEnd();
+        }
+        .lianlu3 {
+          width: 100%;
+          height: 40%;
+          background: url("@/assets/dashboard/lianlu3.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          text-align: center;
+
+          &_content {
+            text-align: center;
+            width: 100%;
+            height: 35%;
+            margin-top: 10px;
+          }
+          &_title {
+            height: 16px;
+            font-size: 16px;
+            font-family: Source Han Sans CN;
+            font-weight: 500;
+            color: #feff00;
+            margin-top: 12px;
+          }
+
+          // &_label {
+          //   font-size: 14px;
+          //   font-family: Source Han Sans CN;
+          //   font-weight: 500;
+          //   color: #ffffff;
+          // }
+          &_point {
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            margin: 2px auto;
+          }
+        }
+        .lianlu4 {
+          height: 30%;
+          margin-top: 2vh;
+          .commonFlexStart();
+        }
+      }
+      &3,
+      &7 {
+        width: 15%;
+        padding-left: 1vw;
+        .commonFlex();
+      }
+
+      &5,
+      &9 {
+        width: 2%;
+        .commonFlex();
+      }
+
+      &10 {
+        padding: 40px;
+        width: 10%;
+        .commonFlex();
+        .name {
+          padding: 20px 0;
+          .commonFlexEnd();
+          .img {
+            width: 50%;
+          }
+          .text {
+            width: 50%;
+            text-align: center;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

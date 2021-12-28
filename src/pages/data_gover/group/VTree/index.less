@@ -1,0 +1,21 @@
+.tree {
+    .position {
+        position       : absolute;
+        right          : 0;
+        display        : flex;
+        justify-content: space-between;
+        width          : 60px;
+        margin-top     : 5px;
+    }
+
+    .color {
+        color      : #1890ff;
+        margin-left: 10px;
+    }
+
+    :global {
+        .ant-tree .ant-tree-node-content-wrapper {
+            position: static !important;
+        }
+    }
+}

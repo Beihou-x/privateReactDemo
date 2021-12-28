@@ -1,0 +1,119 @@
+.screen {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../../assets/screen-bg.png") no-repeat;
+  padding-top: 4.6296vh;
+
+
+  header {
+    background: url("../../../assets/screen-header.png") no-repeat;
+    background-size: contain;
+    background-position: center center;
+    text-align: center;
+    height: 5vh;
+    font-weight: 200;
+    width: 80%;
+    margin: 0 auto;
+
+    h2 {
+      color: #4095e5;
+      font-size: 30px;
+      position: relative;
+      top: -1vh;
+    }
+  }
+
+  .header-total {
+    background: url("../../../assets/screen-header-total-bg.png") no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    height: 5vh;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1vh;
+    white-space: nowrap;
+  }
+
+  &-card {
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+    :global {
+      .ant-card-head {
+        border-bottom: 0;
+        background: url("../../../assets/screen-card-header-bg.png") no-repeat;
+        color: #fff;
+        background-position: 0px center;
+      }
+
+      .ant-card-body {
+        background: url("../../../assets/screen-card-content-bg.png") no-repeat;
+        background-size: 100% 100%;
+        background-position: center center;
+      }
+    }
+  }
+
+  &-service-card {
+
+
+    &-title {
+      min-height: 48px;
+      line-height: 48px;
+      padding: 0 24px;
+      background: url("../../../assets/screen-card-header-bg.png") no-repeat;
+      color: #fff;
+      background-position: 0px center;
+    }
+
+
+  }
+
+  &-bottom {
+    &-title {
+      min-height: 48px;
+      line-height: 48px;
+      padding: 0 24px;
+      background: url("../../../assets/screen-card-header-bg.png") no-repeat;
+      color: #fff;
+      background-position: 0px center;
+    }
+
+    :global {
+      .ant-statistic-title {
+        color:#fff;
+      }
+
+      .ant-statistic-content-value {
+        color: #FCC15A;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 1366px){
+  .screen-bottom {
+    display: none;
+  }
+}
+
+.up {
+  background-image: url("../../../assets/up.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+}
+
+.dowm {
+  background-image: url("../../../assets/down.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 14px;
+  width: 14px;
+  display: inline-block;
+}
